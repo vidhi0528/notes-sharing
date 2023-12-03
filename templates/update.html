@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update PDF</title>
+   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='myfont/css/all.min.css')}}">
+		<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+</head>
+    <body>
+        <div class="col-md-offset-3 col-md-5" style="margin-top:50px">
+            {% for res in data %}
+            <form action="/update_record/{{res['pid']}}" method="POST" enctype="multipart/form-data">
+                <h3 class="page-header text-success text-center"><span class="fa fa-image"> Update PDF (SQLite Database)</span></h3>
+                <div class="form-group">
+                    <label>PDF File</label>
+                    <input type="text" class="form-control"  value="{{res['pdf']}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Browse PDF</label>
+                    <input type="file" class="form-control" name="upload_PDF">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update PDF" class="btn btn-primary btn-block">
+                </div>
+            <div>
+            </div>
+            </form>
+            {% endfor %}
+        </div>
+    </body>
+</html>
